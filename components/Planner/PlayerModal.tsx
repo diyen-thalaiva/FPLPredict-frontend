@@ -26,7 +26,7 @@ export default function PlayerModal({ player, currentGw, onClose, onSub, onRemov
         {/* Header */}
         {/* HEADER: Kit left, Name middle, X right */}
         <div className="flex items-center gap-4 p-4 border-b border-white/5 bg-gradient-to-r from-green-900/40 to-transparent">
-          <img src={`/kits/${player.team}.png`} alt="kit" className="w-10 h-10 object-contain" />
+          <img src={`/Kits/${player.team}.png`} alt="kit" className="w-10 h-10 object-contain" />
           <div className="flex-1">
             <h2 className="text-lg font-black text-white uppercase italic">{player.web_name}</h2>
             <p className="text-green-500 text-[9px] font-bold tracking-widest uppercase">{player.position} • {player.team}</p>

@@ -76,7 +76,7 @@ export default function TransferModal({
               className="grid grid-cols-[1fr_50px_50px_50px_80px] py-3 px-4 border-b border-white/5 hover:bg-green-500/10 cursor-pointer items-center group"
             >
               <div className="flex items-center gap-3">
-                <img src={`/kits/${p.team_name}.png`} className="w-6 h-auto opacity-90" alt="" />
+                <img src={`/Kits/${p.team_name}.png`} className="w-6 h-auto opacity-90" alt="" />
                 <div className="flex flex-col">
                   <span className="text-[11px] font-bold text-white group-hover:text-green-400 transition-colors leading-none">{p.web_name}</span>
                   <span className="text-[8px] text-white/30 uppercase font-bold mt-1">{p.position} | {p.team_name}</span>

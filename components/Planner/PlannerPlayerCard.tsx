@@ -60,7 +60,7 @@ export default function PlannerPlayerCard({
         </div>
 
         <div className="relative w-[75%] h-auto mb-1 mt-2">
-          <Image src="/kits/empty_kit.png" alt="Empty" width={80} height={56} className="w-full h-auto object-contain" priority />
+          <Image src="/Kits/empty_kit.png" alt="Empty" width={80} height={56} className="w-full h-auto object-contain" priority />
         </div>
 
         
