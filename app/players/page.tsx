@@ -93,7 +93,7 @@ export default function PlayersPage() {
               paginatedPlayers.map((p, i) => (
                 <div key={i} className="grid grid-cols-[1fr_55px_55px_40px_85px] sm:grid-cols-[1fr_80px_80px_60px_120px] py-3 px-2 sm:px-4 border-b border-white/5 hover:bg-white/[0.03] items-center">
                   <div className="flex items-center gap-2 overflow-hidden">
-                    <img src={`/kits/${p.team_name}.png`} className="w-4 h-auto sm:w-5" />
+                    <img src={`/Kits/${p.team_name}.png`} className="w-4 h-auto sm:w-5" />
                     <div className="flex flex-col truncate">
                       <span className="text-[9px] sm:text-[11px] font-bold text-white truncate">{p.web_name}</span>
                       <span className="text-[7px] sm:text-[8px] text-white/30 uppercase font-bold">{p.position} {p.team_name.slice(0,3)}</span>
