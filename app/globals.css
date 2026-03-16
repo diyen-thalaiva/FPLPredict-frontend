@@ -1,26 +1,125 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant hover (&:hover);
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  p {
+    color: inherit;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.fpl-neon-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6em 2em;
+  border: mediumspringgreen solid 0.15em;
+  border-radius: 0.25em;
+  color: mediumspringgreen;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  overflow: hidden;
+  transition: border 300ms, color 300ms;
+  user-select: none;
+  background: transparent;
+}
+
+.fpl-neon-btn span {
+  position: relative;
+  z-index: 1;
+}
+
+.fpl-neon-btn:hover {
+  color: #0b1730;
+}
+
+.fpl-neon-btn:active {
+  border-color: teal;
+}
+
+.fpl-neon-btn::before,
+.fpl-neon-btn::after {
+  content: "";
+  position: absolute;
+  width: 9em;
+  aspect-ratio: 1;
+  background: mediumspringgreen;
+  opacity: 0.5;
+  border-radius: 50%;
+  transition: transform 500ms, background 300ms;
+}
+.fpl-neon-btn::before {
+  left: 0;
+  transform: translateX(-8em);
+}
+.fpl-neon-btn::after {
+  right: 0;
+  transform: translateX(8em);
+}
+
+.fpl-neon-btn:hover::before {
+  transform: translateX(-1em);
+}
+
+.fpl-neon-btn:hover::after {
+  transform: translateX(1em);
+}
+
+.fpl-neon-btn:active::before,
+.fpl-neon-btn:active::after {
+  background: teal;
+}
+
+
+@keyframes puzzleIn {
+  /* Normal state */
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+
+  /* Disappear and move away */
+  11.5% {
+    opacity: 0;
+    transform: translate(var(--tx), var(--ty)) scale(0.6);
+  }
+
+  /* Stay disappeared */
+  23% {
+    opacity: 0;
+    transform: translate(var(--tx), var(--ty)) scale(0.6);
+  }
+
+  /* Come back into place */
+  34.5% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+
+  /* 👇 Rest here for 2 seconds (64% onwards = 2s rest) */
+  64% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+.proj-cell {
+  animation: puzzleIn 6s ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+
+.pitch-slot {
+  width: 58px;
+  height: 72px;
+  border-radius: 12px;
+  border: 1px dashed rgba(0,255,150,0.35);
+  background: rgba(0,255,150,0.05);
+  backdrop-filter: blur(3px);
 }
