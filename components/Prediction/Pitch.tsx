@@ -39,7 +39,7 @@ export default function Pitch({
       name={p.web_name} 
       opponent={p.opponent} 
       points={getPoints(p)} 
-      kit={`/kits/${p.team}.png`} 
+      kit={`/Kits/${p.team}.png`} 
       captain={p.is_captain}           // 2. Pass Captain flag
       viceCaptain={p.is_vice_captain}  // 3. Pass Vice Captain flag
     />

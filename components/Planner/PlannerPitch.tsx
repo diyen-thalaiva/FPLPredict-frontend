@@ -113,7 +113,7 @@ export default function PlannerPitch({ players, onUpdateSquad, onTransferClick,o
           form={p.form}
           position={p.position}
           fixtures={p.fixtures}
-          kit={`/kits/${p.team}.png`}
+          kit={`/Kits/${p.team}.png`}
           captain={p.is_captain}
           viceCaptain={p.is_vice_captain}
           isSubbing={isSubbing}
