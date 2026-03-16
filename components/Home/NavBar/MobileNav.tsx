@@ -52,8 +52,14 @@ export default function MobileNav() {
               <ul className="flex flex-col gap-8 text-xl font-medium">
                 <li>
                   <Link
-                    href={hasLogin ? "/prediction" : "/login"}
-                    onClick={() => setOpen(false)}
+                    href="/prediction"
+                    onClick={(e) => {
+                      // If no ID, force them to login instead
+                      if (!localStorage.getItem("fpl_manager_id")) {
+                        e.preventDefault();
+                        window.location.href = "/login";
+                      }
+                    }}
                     className="hover:text-green-500 transition"
                   >
                     Prediction
@@ -62,8 +68,14 @@ export default function MobileNav() {
 
                 <li>
                   <Link
-                    href={hasLogin ? "/planner" : "/login"} 
-                    className="hover:text-green-500 transition font-medium"
+                    href="/planner"
+                    onClick={(e) => {
+                      if (!localStorage.getItem("fpl_manager_id")) {
+                        e.preventDefault();
+                        window.location.href = "/login";
+                      }
+                    }}
+                    className="hover:text-green-500 transition"
                   >
                     Planner
                   </Link>

@@ -176,7 +176,7 @@ export default function TransferSidebar({
                 className="grid grid-cols-[1fr_55px_60px_50px_90px] py-3 px-4 border-b border-white/5 hover:bg-white/[0.03]"
               >
                 <div className="flex items-center gap-2">
-                  <img src={`/kits/${p.team_name}.png`} className="w-5 h-auto"/>
+                  <img src={`/Kits/${p.team_name}.png`} className="w-5 h-auto"/>
                   <span className="text-[11px] font-bold text-white">{p.web_name}</span>
                 </div>
 
