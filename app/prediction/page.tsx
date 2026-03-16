@@ -13,6 +13,7 @@ type ApiPlayer = {
   pred_points: number;
   pred_points_base: number;
   is_captain: boolean;
+  is_vice_captain: boolean;
   is_bench: boolean;
 };
 
