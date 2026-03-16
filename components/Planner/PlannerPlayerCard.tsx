@@ -118,7 +118,7 @@ export default function PlannerPlayerCard({
         isSubbing ? "brightness-150 drop-shadow-[0_0_10px_rgba(255,255,0,0.5)]" : 
         isValidTarget ? "animate-pulse brightness-125" : "group-hover:brightness-125"
       }`}>
-        <Image src={kit} alt={name} width={80} height={56} className="w-full h-auto object-contain block drop-shadow-md" />
+        <Image src={kit} alt={name || "Player"} width={80} height={56} className="w-full h-auto object-contain block drop-shadow-md" />
       </div>
 
       <div className="flex flex-col w-[60px] sm:w-[80px] gap-[2px] -mt-1 z-20">

@@ -10,6 +10,7 @@ type Fixture = {
   display_date: string | null
   started: boolean
   finished: boolean
+  finished_provisional: boolean
   is_live: boolean
 }
 
