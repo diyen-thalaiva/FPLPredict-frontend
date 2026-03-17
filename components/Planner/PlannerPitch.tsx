@@ -131,7 +131,7 @@ export default function PlannerPitch({ players, onUpdateSquad, onTransferClick,o
 
   return (
     <div className="w-full flex flex-col items-center">
-      <div className="relative w-full max-w-[580px] h-[75vh] sm:h-[80vh] max-h-[800px] rounded-xl overflow-hidden border border-green-500/20 shadow-2xl bg-[#041f17]">
+      <div className="relative w-full max-w-[580px] h-[75vh] sm:h-[90vh] max-h-[850px] rounded-xl overflow-hidden border border-green-500/20 shadow-2xl bg-[#041f17]">
         {/* Pitch Visuals */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#114d3b] via-[#0a3528] to-[#041f17]" />
         <div className="absolute inset-0 opacity-[0.1] bg-[radial-gradient(circle_at_center,_#00ff88_1px,_transparent_1px)] [background-size:10px_10px]" />
