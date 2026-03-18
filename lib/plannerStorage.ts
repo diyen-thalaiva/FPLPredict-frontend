@@ -68,7 +68,8 @@ export function savePlans(managerId: string, plans: Plan[]) {
 export function createPlan(
   managerId: string,
   gw: number,
-  squad: PlannerPlayer[]
+  squad: PlannerPlayer[],
+  initialBank: number
 ): Plan | null {
   const plans = getPlans(managerId);
 
@@ -80,7 +81,7 @@ export function createPlan(
     gw,
     created_at: new Date().toISOString(),
     squad,
-    bank: 0,
+    bank: initialBank,
     transfers: [],
   };
 

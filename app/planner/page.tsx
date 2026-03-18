@@ -41,7 +41,7 @@ export default function PlannerHubPage() {
     }
   };
 
-  // ⭐ CREATE
+  //  CREATE
   const handleCreatePlan = async () => {
 
     if (plans.length >= maxPlans) {
@@ -80,7 +80,7 @@ export default function PlannerHubPage() {
     }
   };  
 
-  // ⭐ DELETE
+  //  DELETE
   const handleDelete = (id: string) => {
     if (window.confirm("Delete this plan? This cannot be undone.")) {
       deletePlan(managerId!, id);
@@ -88,7 +88,7 @@ export default function PlannerHubPage() {
     }
   };
 
-  // ⭐ DUPLICATE
+  //  DUPLICATE
   const handleDuplicate = (id: string) => {
     if (plans.length >= maxPlans) {
       alert("Maximum 2 plans allowed in guest mode.");
@@ -98,7 +98,7 @@ export default function PlannerHubPage() {
     refreshPlans();
   };
 
-  // ⭐ RENAME logic
+  //  RENAME logic
   const handleRenameSubmit = (id: string) => {
     if (!editName.trim()) {
       setEditingId(null);

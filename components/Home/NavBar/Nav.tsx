@@ -8,9 +8,23 @@ import { useEffect, useState } from "react";
 export default function Navbar() {
   const [hasLogin, setHasLogin] = useState(false);
 
-  useEffect(() => {
-    const id = localStorage.getItem("fpl_manager_id");
-    setHasLogin(!!id);
+ useEffect(() => {
+    // 1. Create the helper function
+    const checkLogin = () => {
+      const id = localStorage.getItem("fpl_manager_id");
+      setHasLogin(!!id);
+    };
+
+    // 2. Check immediately when the navbar loads
+    checkLogin();
+
+    // 3. Listen for the auth change event we created in page.tsx
+    window.addEventListener("fpl-auth-change", checkLogin);
+
+    // 4. Clean up the listener when the component unmounts
+    return () => {
+      window.removeEventListener("fpl-auth-change", checkLogin);
+    };
   }, []);
 
   return (
