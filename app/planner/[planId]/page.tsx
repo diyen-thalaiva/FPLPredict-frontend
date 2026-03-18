@@ -132,7 +132,7 @@ export default function PlannerEditorPage() {
     setPlan(currentPlan);
     // restore planner state
     setDraftSquad(currentPlan.squad);
-    setBank(currentPlan.bank ?? currentPlan.bank);
+    setBank(currentPlan.bank ?? 0);
     setTransferCount(currentPlan.transferCount ?? 0);
     setTransferCost(currentPlan.transferCost ?? 0);
     setActiveChip(currentPlan.activeChip ?? null);
@@ -140,9 +140,12 @@ export default function PlannerEditorPage() {
       .then(res => res.json())
       .then(data => {
         setFreeTransfers(data.free_transfers);
-        setBank(data.bank);
         setAvailableChips(data.available_chips);
         setChipHistory(data.chip_history);
+        // ONLY set bank from API if the plan doesn't have a bank value yet 
+        if (currentPlan.bank === undefined || currentPlan.bank === null) {
+          setBank(data.bank);
+        }
       })
       .catch(err => console.error("Planner fetch failed:", err));
     
