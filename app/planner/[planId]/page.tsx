@@ -140,12 +140,12 @@ export default function PlannerEditorPage() {
       .then(res => res.json())
       .then(data => {
         setFreeTransfers(data.free_transfers);
-        setAvailableChips(data.available_chips);
-        setChipHistory(data.chip_history);
-        // ONLY set bank from API if the plan doesn't have a bank value yet 
         if (currentPlan.bank === undefined || currentPlan.bank === null) {
           setBank(data.bank);
         }
+        setAvailableChips(data.available_chips);
+        setChipHistory(data.chip_history);
+
       })
       .catch(err => console.error("Planner fetch failed:", err));
     
@@ -184,7 +184,7 @@ export default function PlannerEditorPage() {
     setPlan(updatedPlan);
     updatePlan(mId, updatedPlan);
 
-  }, [draftSquad ,bank, transferCount, transferCost, activeChip, transferMap]);
+  },  [draftSquad, bank, transferCount, transferCost, activeChip]);
 
   // 3. Define the removal logic here
   const handleRemovePlayer = (name: string) => {
