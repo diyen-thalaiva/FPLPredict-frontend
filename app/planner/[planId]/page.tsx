@@ -132,7 +132,7 @@ export default function PlannerEditorPage() {
     setPlan(currentPlan);
     // restore planner state
     setDraftSquad(currentPlan.squad);
-    setBank(currentPlan.bank ?? 0);
+    setBank(currentPlan.bank ?? null);
     setTransferCount(currentPlan.transferCount ?? 0);
     setTransferCost(currentPlan.transferCost ?? 0);
     setActiveChip(currentPlan.activeChip ?? null);
@@ -140,8 +140,10 @@ export default function PlannerEditorPage() {
       .then(res => res.json())
       .then(data => {
         setFreeTransfers(data.free_transfers);
-        if (currentPlan.bank === undefined || currentPlan.bank === null) {
-          setBank(data.bank);
+        const isFreshPlan = !currentPlan.transferCount || currentPlan.transferCount === 0;
+    
+        if (currentPlan.bank == null || (currentPlan.bank === 0 && isFreshPlan)) {
+          setBank(data.bank); // Overwrite with actual FPL bank
         }
         setAvailableChips(data.available_chips);
         setChipHistory(data.chip_history);
@@ -167,7 +169,7 @@ export default function PlannerEditorPage() {
     }, [plan]);
 
     useEffect(() => {
-    if (!plan) return;
+    if (!plan || bank === null) return;
 
     const mId = localStorage.getItem("fpl_manager_id");
     if (!mId) return;
@@ -175,7 +177,7 @@ export default function PlannerEditorPage() {
     const updatedPlan = {
       ...plan,
       squad: draftSquad,
-      bank: bank ?? 0,
+      bank: bank,
       transferCount,
       transferCost,
       activeChip
