@@ -184,7 +184,7 @@ export default function PlannerEditorPage() {
     setPlan(updatedPlan);
     updatePlan(mId, updatedPlan);
 
-  }, [draftSquad]);
+  }, [draftSquad ,bank, transferCount, transferCost, activeChip, transferMap]);
 
   // 3. Define the removal logic here
   const handleRemovePlayer = (name: string) => {
