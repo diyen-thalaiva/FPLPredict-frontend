@@ -10,6 +10,7 @@ export default function LoginPage() {
   const [teamName, setTeamName] = useState<string | null>(null); 
   const [isLoading, setIsLoading] = useState(false);
   const [focused, setFocused] = useState<string | null>(null);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   
   // Modal State
   const [showHelp, setShowHelp] = useState(false);
@@ -39,12 +40,35 @@ export default function LoginPage() {
     }
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!managerId) return;
+    
     setIsLoading(true);
-    localStorage.setItem("fpl_manager_id", managerId);
-    setTimeout(() => router.push("/prediction"), 800);
+    setErrorMsg(null); // Clear any previous errors
+
+    try {
+      // 1. Ask the backend to validate the ID
+      const res = await fetch(`https://fplpredict-backend.onrender.com/manager/${managerId}/validate`);
+      
+      // 2. If the backend returns a 404/502, throw an error
+      if (!res.ok) {
+        throw new Error("Invalid Manager ID. Please check and try again.");
+      }
+
+      const data = await res.json();
+
+      // 3. If successful, save to localStorage and redirect!
+      localStorage.setItem("fpl_manager_id", managerId);
+      localStorage.setItem("fpl_team_name", data.team_name); // Bonus: We get the team name early!
+      
+      router.push("/prediction");
+
+    } catch (err: any) {
+      // 4. If it fails, show the error and stop the spinner so they can try again
+      setErrorMsg(err.message || "Failed to verify Manager ID.");
+      setIsLoading(false); 
+    }
   };
 
   const handleReset = () => {
@@ -493,13 +517,22 @@ export default function LoginPage() {
                     type="number"
                     required
                     value={managerId}
-                    onChange={(e) => setManagerId(e.target.value)}
+                    onChange={(e) => {
+                      setManagerId(e.target.value);
+                      setErrorMsg(null); // Hide error when they start typing again
+                    }}
                     onFocus={() => setFocused("manager")}
                     onBlur={() => setFocused(null)}
                     className="form-input"
                     placeholder="e.g. 8801835"
                     autoFocus
                   />
+                  {/* ERROR MESSAGE DISPLAY */}
+                  {errorMsg && (
+                    <div style={{ color: 'var(--red)', fontSize: '0.85rem', marginTop: '8px', fontFamily: 'DM Sans' }}>
+                      {errorMsg}
+                    </div>
+                  )}
                   <button 
                     type="button"
                     onClick={() => setShowHelp(true)}
