@@ -61,6 +61,8 @@ export default function LoginPage() {
       // 3. If successful, save to localStorage and redirect!
       localStorage.setItem("fpl_manager_id", managerId);
       localStorage.setItem("fpl_team_name", data.team_name); // Bonus: We get the team name early!
+
+      window.dispatchEvent(new Event("fpl-auth-change"));
       
       router.push("/prediction");
 
@@ -515,9 +517,12 @@ export default function LoginPage() {
                   </label>
                   <input
                     type="number"
+                    inputMode="numeric"
                     required
                     value={managerId}
                     onChange={(e) => {
+                      const sanitizedValue = e.target.value.replace(/[^0-9]/g, ''); 
+                      setManagerId(sanitizedValue);
                       setManagerId(e.target.value);
                       setErrorMsg(null); // Hide error when they start typing again
                     }}
