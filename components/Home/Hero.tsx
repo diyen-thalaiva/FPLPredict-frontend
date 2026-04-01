@@ -58,7 +58,7 @@ export default function Hero() {
             </h1>
 
             <p className="text-white/70 text-base md:text-lg max-w-xl mb-10 leading-relaxed">
-              Machine-learning powered projections, transfer planning, and lineup optimisation
+              Machine-learning powered projections, transfer planning, and Player data
               to help you make smarter FPL decisions before every gameweek.
             </p>
 
