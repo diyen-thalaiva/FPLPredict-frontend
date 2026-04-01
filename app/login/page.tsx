@@ -523,7 +523,6 @@ export default function LoginPage() {
                     onChange={(e) => {
                       const sanitizedValue = e.target.value.replace(/[^0-9]/g, ''); 
                       setManagerId(sanitizedValue);
-                      setManagerId(e.target.value);
                       setErrorMsg(null); // Hide error when they start typing again
                     }}
                     onFocus={() => setFocused("manager")}

@@ -100,7 +100,7 @@ export default function Hero() {
           </h1>
           <div className="mt-6 backdrop-blur bg-black/40 border border-white/10 rounded-xl p-5 max-w-md">
             <p className="text-white/90 text-lg leading-relaxed">
-              Machine-learning projections, transfer planning and lineup optimisation
+              Machine-learning projections, transfer planning and player data
               to make smarter FPL decisions every gameweek.
             </p>
           </div>
