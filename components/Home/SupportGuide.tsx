@@ -17,7 +17,7 @@ export default function SupportGuide() {
             <p className="text-white/80 leading-relaxed mb-6">
               FPL is a game of management. You have £100m to build a squad of 15 players. 
               Each week, you must select your "Starting 11" and choose a Captain (who scores double points). 
-              Success isn't just about picking the best players; it's about <strong>fixture management</strong> 
+              Success isn't just about picking the best players; it's about <strong>fixture management </strong> 
               and knowing when to rotate your squad.
             </p>
             <div className="bg-black/40 p-6 rounded-lg border border-white/5">
@@ -31,12 +31,12 @@ export default function SupportGuide() {
             <h3 className="text-3xl font-bold mb-6 text-green-500">2. Bridging the Data Gap</h3>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h4 className="font-bold text-lg mb-2">Projections</h4>
-                <p className="text-white/70">Our AI analyzes player form and upcoming opponent difficulty to provide <strong>Expected Points (xP)</strong>, helping you avoid bad transfers.</p>
+                <h4 className="font-bold text-lg mb-2">Predictions</h4>
+                <p className="text-white/70">Our AI analyzes player form and upcoming opponent difficulty to provide <strong>Predicted  Points (xP)</strong>, helping you avoid bad transfers.</p>
               </div>
               <div>
                 <h4 className="font-bold text-lg mb-2">The Planner</h4>
-                <p className="text-white/70">Visualise your squad's future. Our planner tracks fixture difficulty across the entire season, ensuring you're never caught off-guard by a "Blank Gameweek."</p>
+                <p className="text-white/70">Visualise your squad's future. Our planner tracks fixture difficulty across the entire season."</p>
               </div>
             </div>
           </div>
@@ -46,8 +46,8 @@ export default function SupportGuide() {
             <h3 className="text-3xl font-bold mb-6 text-green-500">3. Quick-Start Workflow</h3>
             <ul className="space-y-4 text-white/80">
               <li className="flex gap-4"><span>✅</span> Check <strong>Player Data</strong> for high-value prospects.</li>
-              <li className="flex gap-4"><span>✅</span> Use the <strong>Planner</strong> to map out your next 3 transfers.</li>
-              <li className="flex gap-4"><span>✅</span> Get insight about players from <strong>Elite data</strong>.</li>
+              <li className="flex gap-4"><span>✅</span> Use the <strong>Planner</strong> to plan your transfers and substitutions.</li>
+              <li className="flex gap-4"><span>✅</span> Get insight about players from <strong>Player data</strong>.</li>
             </ul>
           </div>
 
