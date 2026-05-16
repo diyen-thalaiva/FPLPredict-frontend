@@ -21,12 +21,13 @@ type PlannerApiPlayer = {
 
 interface PlannerPitchProps {
   players: PlannerApiPlayer[];
+  predictionGw: number;
   onUpdateSquad: (newSquad: PlannerApiPlayer[]) => void;
   onTransferClick: (player: PlannerApiPlayer) => void;
   onRemovePlayer: (name: string) => void;
 }
 
-export default function PlannerPitch({ players, onUpdateSquad, onTransferClick,onRemovePlayer }: PlannerPitchProps) {
+export default function PlannerPitch({ players,predictionGw, onUpdateSquad, onTransferClick,onRemovePlayer }: PlannerPitchProps) {
   // activeSubId stores the web_name of the player whose LEFT ICON was clicked
   const [activeSubId, setActiveSubId] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -177,7 +178,7 @@ export default function PlannerPitch({ players, onUpdateSquad, onTransferClick,o
       {isModalOpen && selectedPlayer && (
         <PlayerModal 
           player={selectedPlayer}
-          currentGw={31} // Pass your current GW
+          currentGw={predictionGw} // Pass your current GW
           onClose={() => setIsModalOpen(false)}
           onSub={() => {
             setActiveSubId(selectedPlayer.web_name); // Trigger the "Sub Mode" glow
