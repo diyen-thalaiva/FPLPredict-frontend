@@ -52,7 +52,7 @@ export default function PlayerModal({ player, currentGw, onClose, onSub, onRemov
             <p className="text-[9px] text-white/40 uppercase font-bold mb-2">Next 3 Fixtures</p>
             <div className="grid grid-cols-3 gap-2">
                 {player.fixtures?.slice(0, 3).map((fixture: string, index: number) => {
-                const targetGw = currentGw + index;
+                const targetGw = player.prediction_gw + index;
                 const isNoFixture = fixture === "-"; 
                 
                 return (

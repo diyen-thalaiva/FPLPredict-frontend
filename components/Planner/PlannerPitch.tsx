@@ -55,7 +55,7 @@ export default function PlannerPitch({ players, onUpdateSquad, onTransferClick,o
    * ACTION: Updated to handle both Sub Mode logic and Modal Opening logic
    */
   const handleCardClick = (targetPlayer: PlannerApiPlayer) => {
-    // 1. If we are in "Sub Mode", handle the swap logic
+    // 1. If in Sub Mode handle swap logic
     if (activeSubId) {
       const sourcePlayer = players.find((p) => p.web_name === activeSubId);
       
