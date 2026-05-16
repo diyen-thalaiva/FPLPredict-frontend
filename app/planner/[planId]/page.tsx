@@ -28,6 +28,7 @@ export default function PlannerEditorPage() {
   const [transferMap, setTransferMap] = useState<Record<string, any>>({});
   const [transferCount, setTransferCount] = useState(0);
   const [transferCost, setTransferCost] = useState(0);
+  const [predictionGw, setPredictionGw] = useState<number>(0);
 
 
 
@@ -145,6 +146,7 @@ export default function PlannerEditorPage() {
         if (currentPlan.bank == null || (currentPlan.bank === 0 && isFreshPlan)) {
           setBank(data.bank); // Overwrite with actual FPL bank
         }
+        setPredictionGw(data.prediction_gw);
         setAvailableChips(data.available_chips);
         setChipHistory(data.chip_history);
 
@@ -348,7 +350,8 @@ export default function PlannerEditorPage() {
           <div className="w-full lg:w-[65%] flex flex-col gap-4">
             <div className="bg-[#05211a]/30 rounded-2xl p-4 border border-green-500/10 shadow-inner">
               <PlannerPitch 
-                players={draftSquad} 
+                players={draftSquad}
+                predictionGw={predictionGw}
                 onUpdateSquad={setDraftSquad}
                 onTransferClick={handleInitiateTransfer}
                 onRemovePlayer={handleRemovePlayer}
