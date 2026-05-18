@@ -51,13 +51,13 @@ export default function PlayerCard({
       </div>
       {isInjured && (
         <div title={news} className="text-red-500 text-sm">
-          🔴
+          🚩
         </div>
       )}
 
       {!isInjured && isDoubtful && (
         <div title={news} className="text-yellow-400 text-sm">
-          🟡
+          ⚠️
         </div>
       )}
 
