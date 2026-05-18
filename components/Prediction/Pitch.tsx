@@ -11,6 +11,7 @@ type ApiPlayer = {
   is_captain: boolean;
   is_vice_captain: boolean; // 1. Added this to the type
   is_bench: boolean;
+  news?: string;
 };
 
 export default function Pitch({
@@ -42,6 +43,8 @@ export default function Pitch({
       kit={`/Kits/${p.team}.png`} 
       captain={p.is_captain}           // 2. Pass Captain flag
       viceCaptain={p.is_vice_captain}  // 3. Pass Vice Captain flag
+      news={p.news}
+      
     />
   );
 

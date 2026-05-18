@@ -9,6 +9,7 @@ interface PlayerCardProps {
   kit: string;
   captain?: boolean;
   viceCaptain?: boolean;
+  news?: string; 
 }
 
 export default function PlayerCard({
@@ -18,7 +19,19 @@ export default function PlayerCard({
   kit,
   captain,
   viceCaptain,
+  news,
 }: PlayerCardProps) {
+  const newsText = (news || "").toLowerCase();
+
+  const isInjured =
+    newsText.includes("injury") ||
+    newsText.includes("out");
+
+  const isDoubtful =
+    newsText.includes("chance") ||
+    newsText.includes("75") ||
+    newsText.includes("50") ||
+    newsText.includes("25");
   return (
     <div className="group relative flex flex-col items-center cursor-pointer transition-all duration-200 hover:scale-105 w-[75px] sm:w-[100px]">
 
@@ -36,6 +49,17 @@ export default function PlayerCard({
           </div>
         )}
       </div>
+      {isInjured && (
+        <div title={news} className="text-red-500 text-sm">
+          🔴
+        </div>
+      )}
+
+      {!isInjured && isDoubtful && (
+        <div title={news} className="text-yellow-400 text-sm">
+          🟡
+        </div>
+      )}
 
       {/* 2. KIT IMAGE */}
       <div className="relative w-full h-auto transition-filter duration-200 group-hover:brightness-125">

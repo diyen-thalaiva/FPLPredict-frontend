@@ -15,6 +15,7 @@ type ApiPlayer = {
   is_captain: boolean;
   is_vice_captain: boolean;
   is_bench: boolean;
+  news?: string; 
 };
 
 type ManagerResponse = {
