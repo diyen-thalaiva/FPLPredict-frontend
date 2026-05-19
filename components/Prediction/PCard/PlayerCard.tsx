@@ -34,6 +34,19 @@ export default function PlayerCard({
     newsText.includes("25");
   return (
     <div className="group relative flex flex-col items-center cursor-pointer transition-all duration-200 hover:scale-105 w-[75px] sm:w-[100px]">
+      <div className="absolute top-0 right-0 sm:right-2 z-20">
+        {isInjured && (
+          <div title={news} className="text-red-500 text-sm">
+            🚩
+          </div>
+        )}
+      
+        {!isInjured && isDoubtful && (
+          <div title={news} className="text-yellow-400 text-sm">
+            ⚠️
+          </div>
+        )}
+      </div>
 
       {/* 1. BADGE CONTAINER (Fixed nesting here) */}
       <div className="absolute top-0 left-0 sm:left-2 flex flex-col gap-1 z-20">
@@ -49,17 +62,6 @@ export default function PlayerCard({
           </div>
         )}
       </div>
-      {isInjured && (
-        <div title={news} className="text-red-500 text-sm">
-          🚩
-        </div>
-      )}
-
-      {!isInjured && isDoubtful && (
-        <div title={news} className="text-yellow-400 text-sm">
-          ⚠️
-        </div>
-      )}
 
       {/* 2. KIT IMAGE */}
       <div className="relative w-full h-auto transition-filter duration-200 group-hover:brightness-125">
