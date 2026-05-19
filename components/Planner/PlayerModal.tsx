@@ -46,7 +46,19 @@ export default function PlayerModal({ player, currentGw, onClose, onSub, onRemov
             <p className="text-white font-black">{player.ownership_pct}%</p>
           </div>
         </div>
-
+        {/* Availability */}
+        {player.news && player.news !== "Blank Gameweek" && (
+          <div className="px-4 pb-4">
+            <div className="bg-black/20 rounded-lg p-3 border border-red-500/20">
+              <p className="text-[9px] text-red-400 uppercase font-bold mb-1">
+                Availability
+              </p>
+              <p className="text-white text-xs">
+                {player.news}
+              </p>
+            </div>
+          </div>
+        )}
         {/* FIXTURES SECTION */}
         <div className="px-4 pb-4">
             <p className="text-[9px] text-white/40 uppercase font-bold mb-2">Next 3 Fixtures</p>

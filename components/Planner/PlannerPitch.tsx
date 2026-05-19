@@ -17,6 +17,7 @@ type PlannerApiPlayer = {
   is_vice_captain: boolean;
   is_bench: boolean;
   is_removed?: boolean;
+  news?: string;
 };
 
 interface PlannerPitchProps {
@@ -117,6 +118,7 @@ export default function PlannerPitch({ players,predictionGw, onUpdateSquad, onTr
           kit={`/Kits/${p.team}.png`}
           captain={p.is_captain}
           viceCaptain={p.is_vice_captain}
+          news={p.news}
           isSubbing={isSubbing}
           isValidTarget={isValidTarget}
           onSubClick={(e) => handleSubIconClick(e,p)} 

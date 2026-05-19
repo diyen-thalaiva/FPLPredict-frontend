@@ -17,6 +17,7 @@ export interface PlannerPlayerCardProps {
   position?:string;
   viceCaptain?: boolean;
   is_removed?: boolean;
+  news?: string;
   
   // NEW PROPS FOR LOGIC
   isSubbing?: boolean;       // Is this player selected to be moved?
@@ -28,6 +29,7 @@ export interface PlannerPlayerCardProps {
 export default function PlannerPlayerCard({
   name,
   is_removed,
+  news,
   points,
   form,
   value,
@@ -44,7 +46,17 @@ export default function PlannerPlayerCard({
 }: PlannerPlayerCardProps) {
   
   const boxStyle = "flex items-center justify-center bg-[#05211a]/90 border border-green-500/30 backdrop-blur-[1px] shadow-[0_0_4px_rgba(0,255,150,0.15)] group-hover:bg-[#0a3d30] group-hover:border-green-400 transition-colors duration-200 rounded-[2px] sm:rounded-sm";
+  const newsText = (news || "").toLowerCase();
 
+  const isInjured =
+    newsText.includes("injury") ||
+    newsText.includes("out");
+
+  const isDoubtful =
+    newsText.includes("chance") ||
+    newsText.includes("75") ||
+    newsText.includes("50") ||
+    newsText.includes("25");
   // --- STATE 1: EMPTY SLOT (NOW TRIGGERED BY FLAG) ---
   if (is_removed) {
     return (
@@ -92,7 +104,14 @@ export default function PlannerPlayerCard({
       </div>
       {/* TOP ACTION ICONS */}
 
-
+      {/* Injury icon */}
+      {(isInjured || isDoubtful) && (
+        <div className="absolute top-0 right-1 z-40">
+          <span className="text-sm">
+            {isInjured ? "🚩" : "⚠️"}
+          </span>
+        </div>
+      )}
       {/* REMOVE ICON: Only action visible on an active player (Top Right) */}
       <div className="absolute -top-2 -right-2 z-50 opacity-0 group-hover:opacity-100 transition-opacity">
         <button 
