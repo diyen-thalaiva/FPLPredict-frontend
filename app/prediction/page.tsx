@@ -88,11 +88,27 @@ export default function PredictionPage() {
       <div className="max-w-6xl mx-auto flex flex-col items-center gap-10">
         {/* ===== INFO HEADER ===== */}
         <div className="w-full max-w-[720px]">
-          <div className="text-center mb-6">
-            <div className="text-white/70 text-sm uppercase tracking-wide">Gameweek</div>
-            <div className="text-3xl font-bold text-white">{data.prediction_gw}</div>
-            <div className="mt-5 text-white/70 text-sm uppercase tracking-wide">Total Predicted Points</div>
-            <div className="text-2xl font-semibold text-green-400">{data.total_predicted_points}</div>
+          <div className="mb-6">
+            <div className="flex justify-between items-start">
+              
+              {/* Gameweek */}
+              <div className="text-center flex-1">
+                <div className="text-white/70 text-sm uppercase tracking-wide">Gameweek</div>
+                <div className="text-3xl font-bold text-white">{data.prediction_gw}</div>
+              </div>
+
+              {/* Injury legend */}
+              <div className="text-right text-[10px] sm:text-xs text-white/60 mt-1">
+                <div>🚩 Injured / Out</div>
+                <div>⚠️ Doubtful</div>
+              </div>
+
+            </div>
+
+            <div className="mt-5 text-center">
+              <div className="text-white/70 text-sm uppercase tracking-wide">Total Predicted Points</div>
+              <div className="text-2xl font-semibold text-green-400">{data.total_predicted_points}</div>
+            </div>
           </div>
 
           {Number(data.team_source_gw) < Number(data.prediction_gw) && (
