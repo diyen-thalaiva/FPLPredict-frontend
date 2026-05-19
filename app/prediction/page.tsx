@@ -89,8 +89,11 @@ export default function PredictionPage() {
         {/* ===== INFO HEADER ===== */}
         <div className="w-full max-w-[720px]">
           <div className="mb-6">
-            <div className="flex justify-between items-start">
+            <div className="flex items-start justify-between">
               
+              {/* Spacer to balance the injury legend */}
+              <div className="flex-none w-24 sm:w-28" />
+
               {/* Gameweek */}
               <div className="text-center flex-1">
                 <div className="text-white/70 text-sm uppercase tracking-wide">Gameweek</div>
@@ -98,7 +101,7 @@ export default function PredictionPage() {
               </div>
 
               {/* Injury legend */}
-              <div className="text-right text-[10px] sm:text-xs text-white/60 mt-1">
+              <div className="flex-none w-28 sm:w-32 text-right text-[15px] sm:text-s text-white/90 mt-3">
                 <div>🚩 Injured / Out</div>
                 <div>⚠️ Doubtful</div>
               </div>
@@ -110,7 +113,6 @@ export default function PredictionPage() {
               <div className="text-2xl font-semibold text-green-400">{data.total_predicted_points}</div>
             </div>
           </div>
-
           {Number(data.team_source_gw) < Number(data.prediction_gw) && (
             <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4 mb-6 flex items-center gap-3">
               <span className="text-xl">⚠️</span>
